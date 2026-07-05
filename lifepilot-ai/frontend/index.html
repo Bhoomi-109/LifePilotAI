@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifePilot AI - Multi-Agent Personal Assistant</title>
+  <!-- Google Fonts: Outfit (headings) & Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= LANDING PAGE VIEW ================= -->
+  <section id="landing-view" class="view-panel active">
+    <div class="landing-gradient-sphere"></div>
+    <div class="landing-container">
+      <header class="landing-header">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" width="32" height="32" class="logo-icon"><path fill="currentColor" d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+          <span>LifePilot AI</span>
+        </div>
+        <button class="btn btn-outline" id="btn-quick-launch">Go to Dashboard</button>
+      </header>
+
+      <main class="landing-hero-section">
+        <div class="badge-tag">Kaggle Capstone: Concierge Track</div>
+        <h1 class="landing-title">Pilot Your Life. <br>Optimized by <span class="gradient-text">AI Agents</span>.</h1>
+        <p class="landing-subtitle">
+          Say goodbye to manual scheduling stress. LifePilot AI coordinates a team of specialized AI agents (Planner, Scheduler, Study Coach, and Optimizer) alongside an MCP server to craft your perfect daily timeline.
+        </p>
+        
+        <div class="landing-ctas">
+          <button class="btn btn-primary btn-large" id="btn-enter-app">Launch Application</button>
+          <a href="#features-anchor" class="btn btn-ghost">Learn More ↓</a>
+        </div>
+
+        <!-- Hero Stats Mockup -->
+        <div class="hero-dashboard-mockup">
+          <div class="mockup-header">
+            <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+            <div class="mockup-title">LifePilot Agent Workspace</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-grid">
+              <div class="mock-card">
+                <h3>Today's Focus</h3>
+                <div class="mock-val">Calculus Study Session</div>
+                <span class="mock-tag high">High Priority</span>
+              </div>
+              <div class="mock-card">
+                <h3>Work-Life Balance</h3>
+                <div class="mock-val">Optimal</div>
+                <span class="mock-tag ok">Low Burnout Risk</span>
+              </div>
+              <div class="mock-card">
+                <h3>Agent Network</h3>
+                <div class="mock-val">5 Connected</div>
+                <span class="mock-tag mcp">MCP Server: Online</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <section id="features-anchor" class="landing-features">
+        <h2 class="section-title">The Power of Collaboration</h2>
+        <p class="section-subtitle">Four distinct AI Agents communicating through a Coordinator to plan your success.</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon bg-blue">📋</div>
+            <h3>Planner Agent</h3>
+            <p>Decomposes your high-level goals into actionable task cards and assigns Eisenhower urgency categories.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-purple">🎓</div>
+            <h3>Study Coach Agent</h3>
+            <p>Reviews exam dates and difficulty level to suggest spaced repetition slots and Pomodoro study plans.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-green">📅</div>
+            <h3>Life Scheduler Agent</h3>
+            <p>Balances your lectures, rest periods, and chores into a fluid hour-by-hour calendar layout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon bg-orange">⚡</div>
+            <h3>Task Optimizer Agent</h3>
+            <p>Reorders conflicting slots, aligns items to your peak energy times, and screens for mental fatigue.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ================= APP CONTAINER (DASHBOARD WORKSPACE) ================= -->
+  <div id="app-view" class="app-wrapper" style="display: none;">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar">
+      <div class="sidebar-brand">
+        <svg viewBox="0 0 24 24" width="28" height="28" class="logo-icon"><path fill="currentColor" d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+        <span>LifePilot AI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-target="panel-dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-target="panel-planner">
+          <span class="nav-icon">📋</span> Daily Planner
+        </a>
+        <a href="#" class="nav-item" data-target="panel-study">
+          <span class="nav-icon">🎓</span> Study Assistant
+        </a>
+        <a href="#" class="nav-item" data-target="panel-goals">
+          <span class="nav-icon">🎯</span> Goal Tracker
+        </a>
+        <a href="#" class="nav-item" data-target="panel-tasks">
+          <span class="nav-icon">✅</span> Today's Tasks
+        </a>
+        <a href="#" class="nav-item" data-target="panel-settings">
+          <span class="nav-icon">⚙️</span> Settings
+        </a>
+        <a href="#" class="nav-item" data-target="panel-about">
+          <span class="nav-icon">ℹ️</span> System Architecture
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="theme-toggle-container">
+          <span>Dark Mode</span>
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <button class="btn btn-text-danger" id="btn-logout">Return Home</button>
+      </div>
+    </aside>
+
+    <!-- MAIN APP WRAPPER -->
+    <main class="app-content">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="app-topbar">
+        <div class="topbar-welcome">
+          <h2 id="topbar-date">July 5, 2026</h2>
+          <p>Welcome back, Pilot.</p>
+        </div>
+        <div class="topbar-status">
+          <div class="status-indicator online" id="mcp-indicator">
+            <span class="status-dot"></span>
+            <span class="status-label">MCP: checking...</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW PANELS -->
+      <div class="panel-container">
+
+        <!-- ================= PANEL 1: DASHBOARD OVERVIEW ================= -->
+        <section id="panel-dashboard" class="app-panel active">
+          <div class="dashboard-banner">
+            <div class="banner-text">
+              <h1>Hello, Organizer!</h1>
+              <p id="dashboard-agent-summary">AI coordinator says: Enter your tasks or exams in the sidebar links to calculate an optimized agent plan.</p>
+            </div>
+            <div class="banner-badge">Coordinated AI</div>
+          </div>
+
+          <div class="dashboard-stats-grid">
+            <div class="stat-card glass-card">
+              <div class="card-header">
+                <h3>Today's Completion</h3>
+                <span class="icon bg-blue-soft">✅</span>
+              </div>
+              <div class="progress-circle-wrapper">
+                <svg class="progress-ring" width="80" height="80">
+                  <circle class="progress-ring__circle-bg" stroke="#e2e8f0" stroke-width="6" fill="transparent" r="32" cx="40" cy="40"/>
+                  <circle class="progress-ring__circle" stroke="#2563eb" stroke-dasharray="201.06 201.06" stroke-dashoffset="201.06" stroke-width="6" fill="transparent" r="32" cx="40" cy="40" id="task-progress-ring"/>
+                </svg>
+                <div class="progress-percentage" id="task-percentage-val">0%</div>
+              </div>
+              <p class="stat-subtitle" id="task-completed-label">0 of 0 completed</p>
+            </div>
+
+            <div class="stat-card glass-card">
+              <div class="card-header">
+                <h3>Goals Logged</h3>
+                <span class="icon bg-green-soft">🎯</span>
+              </div>
+              <div class="progress-circle-wrapper">
+                <svg class="progress-ring" width="80" height="80">
+                  <circle class="progress-ring__circle-bg" stroke="#e2e8f0" stroke-width="6" fill="transparent" r="32" cx="40" cy="40"/>
+                  <circle class="progress-ring__circle" stroke="#10b981" stroke-dasharray="201.06 201.06" stroke-dashoffset="201.06" stroke-width="6" fill="transparent" r="32" cx="40" cy="40" id="goal-progress-ring"/>
+                </svg>
+                <div class="progress-percentage" id="goal-percentage-val">0%</div>
+              </div>
+              <p class="stat-subtitle" id="goal-completed-label">0 active targets</p>
+            </div>
+
+            <div class="stat-card glass-card">
+              <div class="card-header">
+                <h3>Burnout Strain</h3>
+                <span class="icon bg-orange-soft">⚡</span>
+              </div>
+              <div class="burnout-value" id="dashboard-burnout-level">Low</div>
+              <div class="burnout-bar-wrapper">
+                <div class="burnout-bar" style="width: 15%; background-color: #10b981;" id="dashboard-burnout-bar"></div>
+              </div>
+              <p class="stat-subtitle" id="dashboard-burnout-subtitle">Sustainable schedule strain</p>
+            </div>
+          </div>
+
+          <div class="dashboard-details-layout">
+            <!-- LEFT SECTION -->
+            <div class="details-left">
+              <div class="glass-card feed-card">
+                <h2>💡 AI Suggestions</h2>
+                <ul class="suggestions-list" id="dashboard-suggestions-feed">
+                  <li>Configure your subjects and tasks to generate specific focus tactics.</li>
+                  <li>Drink a full glass of water before starting your next study block.</li>
+                  <li>Use the 5-minute rule: commit to studying for just 5 minutes. Usually, you will keep going.</li>
+                </ul>
+              </div>
+
+              <div class="glass-card upcoming-card">
+                <h2>Upcoming Exams & Deadlines</h2>
+                <div class="deadline-list" id="dashboard-deadlines-feed">
+                  <div class="empty-state">No exams or deadlines entered. Visit the planner sheets to configure.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SECTION -->
+            <div class="details-right">
+              <div class="glass-card action-card">
+                <h2>🚀 Quick Actions</h2>
+                <div class="quick-actions-grid">
+                  <button class="btn btn-outline" onclick="navigateToPanel('panel-planner')">➕ Add Task</button>
+                  <button class="btn btn-outline" onclick="navigateToPanel('panel-study')">📖 Schedule Exam</button>
+                  <button class="btn btn-outline" onclick="navigateToPanel('panel-goals')">🎯 Set Goal</button>
+                  <button class="btn btn-primary" id="btn-dashboard-generate">⚡ AI Optimize</button>
+                </div>
+              </div>
+
+              <div class="glass-card timeline-card">
+                <h2>Timeline Preview</h2>
+                <div class="preview-timeline" id="dashboard-timeline-preview">
+                  <div class="empty-state">No schedule items planned.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 2: DAILY PLANNER ================= -->
+        <section id="panel-planner" class="app-panel">
+          <div class="section-header-card">
+            <h1>📋 Coordinated Daily Planner</h1>
+            <p>Orchestrate your daily schedules, study slots, and tasks using all four AI Agents.</p>
+          </div>
+
+          <div class="planner-layout">
+            <!-- INPUT COLUMN -->
+            <div class="planner-input-column">
+              <div class="glass-card">
+                <h2>Planner Input Form</h2>
+                <form id="planner-form">
+                  <div class="form-group">
+                    <label for="planner-tasks-input">Tasks List (Separate by commas or lines)</label>
+                    <textarea id="planner-tasks-input" placeholder="Complete chemistry homework&#10;Clean bedroom&#10;Submit project report" rows="4"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="planner-goals-input">Active Goals (Separate by commas or lines)</label>
+                    <textarea id="planner-goals-input" placeholder="Pass Calculus Exam&#10;Improve physical fitness" rows="2"></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group flex-1">
+                      <label for="planner-hours-input">Available Study Hours (Today)</label>
+                      <input type="range" id="planner-hours-input" min="1" max="12" value="4">
+                      <span class="range-val" id="planner-hours-val">4 Hours</span>
+                    </div>
+
+                    <div class="form-group flex-1">
+                      <label for="planner-deadline-input">Global Deadline</label>
+                      <input type="date" id="planner-deadline-input">
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full" id="btn-planner-submit">
+                    <span class="btn-text">⚡ Generate Optimized Plan</span>
+                    <span class="loader" id="planner-loader" style="display: none;"></span>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- OUTPUT COLUMN -->
+            <div class="planner-output-column">
+              <!-- INITIAL STATE -->
+              <div class="glass-card empty-output" id="planner-empty-state">
+                <div class="empty-icon">🤖</div>
+                <h3>Plan Workspace Empty</h3>
+                <p>Fill out the planner input form and click submit to trigger the AI Agent workflow.</p>
+              </div>
+
+              <!-- RESULTS CONTAINER -->
+              <div class="results-container" id="planner-results" style="display: none;">
+                
+                <!-- COGNITIVE SUMMARY -->
+                <div class="alert-box alert-info" id="planner-coordinator-box">
+                  <strong>Coordinator Agent:</strong> <span id="planner-coordinator-summary">Calculating...</span>
+                </div>
+
+                <!-- OPTIMIZED TIMELINE -->
+                <div class="glass-card results-section">
+                  <h2>📅 Hourly Optimized Timetable</h2>
+                  <p class="section-desc">Created by Life Scheduler and refined by Task Optimizer.</p>
+                  
+                  <div class="time-nodes-list" id="planner-timeline-list">
+                    <!-- Dynamic timeline rows -->
+                  </div>
+                </div>
+
+                <!-- PRIORITIZED EISENHOWER GRID -->
+                <div class="glass-card results-section">
+                  <h2>📋 Prioritized Task Quadrants</h2>
+                  <p class="section-desc">Processed by Planner Agent via MCP Task Tool.</p>
+                  
+                  <div class="quadrants-grid">
+                    <div class="quadrant do-first">
+                      <h4>Do First (High Prio)</h4>
+                      <ul id="q-do-first"></ul>
+                    </div>
+                    <div class="quadrant schedule-later">
+                      <h4>Schedule (Important, Less Urgent)</h4>
+                      <ul id="q-schedule"></ul>
+                    </div>
+                    <div class="quadrant delegate">
+                      <h4>Delegate/Batch (Urgent, Less Important)</h4>
+                      <ul id="q-delegate"></ul>
+                    </div>
+                    <div class="quadrant eliminate">
+                      <h4>Postpone/Eliminate (Low Urg/Prio)</h4>
+                      <ul id="q-eliminate"></ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 3: STUDY ASSISTANT ================= -->
+        <section id="panel-study" class="app-panel">
+          <div class="section-header-card">
+            <h1>🎓 Study Coach & Timetable Assistant</h1>
+            <p>Formulate revision timelines, match subjects with cognitive techniques, and plan exams.</p>
+          </div>
+
+          <div class="study-layout">
+            <div class="study-input-card glass-card">
+              <h2>Subject Configuration</h2>
+              <form id="study-form">
+                <div id="subjects-container">
+                  <!-- Subject rows are added here -->
+                  <div class="subject-row">
+                    <input type="text" class="subject-name" placeholder="Subject Name (e.g. Chemistry)" required>
+                    <select class="subject-difficulty">
+                      <option value="high">High Difficulty</option>
+                      <option value="medium" selected>Medium Difficulty</option>
+                      <option value="low">Low Difficulty</option>
+                    </select>
+                    <input type="date" class="subject-exam-date">
+                  </div>
+                </div>
+                <button type="button" class="btn btn-outline btn-small" id="btn-add-subject">➕ Add Another Subject</button>
+
+                <div class="form-group" style="margin-top: 15px;">
+                  <label for="study-hours-input">Available Study Hours</label>
+                  <input type="range" id="study-hours-input" min="1" max="10" value="4">
+                  <span class="range-val" id="study-hours-val">4 Hours</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" id="btn-study-submit">
+                  <span class="btn-text">⚡ Create Study Strategy</span>
+                  <span class="loader" id="study-loader" style="display: none;"></span>
+                </button>
+              </form>
+            </div>
+
+            <div class="study-output-card">
+              <!-- INITIAL STATE -->
+              <div class="glass-card empty-output" id="study-empty-state">
+                <div class="empty-icon">📖</div>
+                <h3>Study Plan Empty</h3>
+                <p>Add subjects, choose difficulties, and generate to load your timetable.</p>
+              </div>
+
+              <!-- RESULTS CONTAINER -->
+              <div class="results-container" id="study-results" style="display: none;">
+                
+                <div class="glass-card">
+                  <h2>🎓 Revision Timetable</h2>
+                  <div class="study-cards-grid" id="study-timetable-cards">
+                    <!-- Dynamic subject cards with Pomodoro steps -->
+                  </div>
+                </div>
+
+                <div class="glass-card">
+                  <h2>📈 Long-Term Revision Plan</h2>
+                  <ul class="steps-checklist" id="study-revision-plan">
+                    <!-- Bullet steps -->
+                  </ul>
+                </div>
+
+                <div class="glass-card">
+                  <h2>💡 Exam Day Strategy</h2>
+                  <p class="strategy-paragraph" id="study-exam-strategy"></p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 4: GOAL TRACKER ================= -->
+        <section id="panel-goals" class="app-panel">
+          <div class="section-header-card">
+            <h1>🎯 Interactive Goal Tracker</h1>
+            <p>Define milestones, track completions, and watch your success percentages grow.</p>
+          </div>
+
+          <div class="goals-layout">
+            <div class="glass-card add-goal-card">
+              <h2>Set New Goal</h2>
+              <form id="goal-form">
+                <div class="form-group">
+                  <label for="goal-title">Goal Description</label>
+                  <input type="text" id="goal-title" placeholder="Complete 5 Calculus Practice Exams" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="goal-target-date">Target Completion Date</label>
+                    <input type="date" id="goal-target-date" required>
+                  </div>
+                  <div class="form-group flex-1">
+                    <label for="goal-category">Category</label>
+                    <select id="goal-category">
+                      <option value="Study">Study / Academy</option>
+                      <option value="Work">Work / Career</option>
+                      <option value="Health">Health / Fitness</option>
+                      <option value="Life">Personal / Life</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Goal</button>
+              </form>
+            </div>
+
+            <div class="goals-list-section">
+              <h2>Active Milestones</h2>
+              <div class="goals-grid" id="active-goals-grid">
+                <!-- Goals are loaded here dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 5: TODAY'S TASKS ================= -->
+        <section id="panel-tasks" class="app-panel">
+          <div class="section-header-card">
+            <h1>✅ Today's Tasks Manager</h1>
+            <p>Interactive check-off list to log actions and update your stats board instantly.</p>
+          </div>
+
+          <div class="tasks-layout">
+            <div class="glass-card input-task-card">
+              <h2>Add Individual Task</h2>
+              <form id="quick-task-form">
+                <div class="form-row">
+                  <div class="form-group flex-2">
+                    <input type="text" id="quick-task-title" placeholder="Task description (e.g. Buy milk)" required>
+                  </div>
+                  <div class="form-group flex-1">
+                    <select id="quick-task-priority">
+                      <option value="high">High Prio</option>
+                      <option value="medium" selected>Medium Prio</option>
+                      <option value="low">Low Prio</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="tasks-list-card glass-card">
+              <h2>Checklist</h2>
+              <div class="checklist-filters">
+                <button class="btn btn-small filter-btn active" data-filter="all">All</button>
+                <button class="btn btn-small filter-btn" data-filter="pending">Pending</button>
+                <button class="btn btn-small filter-btn" data-filter="completed">Completed</button>
+              </div>
+              <ul class="checklist-items" id="checklist-items-container">
+                <!-- Checklist tasks -->
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 6: SETTINGS ================= -->
+        <section id="panel-settings" class="app-panel">
+          <div class="section-header-card">
+            <h1>⚙️ Settings & Customization</h1>
+            <p>Customize the behavior of AI Agents, preferences, and notifications.</p>
+          </div>
+
+          <div class="settings-layout glass-card">
+            <h2>System & Agent Tuning</h2>
+            <form id="settings-form">
+              <div class="form-group">
+                <h3>Peak Energy Period</h3>
+                <p class="setting-desc">The Optimizer Agent schedules difficult tasks in this window.</p>
+                <div class="radio-group">
+                  <label><input type="radio" name="energy-peak" value="morning" checked> 🌅 Morning (08:00 - 12:00)</label>
+                  <label><input type="radio" name="energy-peak" value="afternoon"> ☀️ Afternoon (12:00 - 17:00)</label>
+                  <label><input type="radio" name="energy-peak" value="evening"> 🌃 Evening (17:00 - 21:00)</label>
+                </div>
+              </div>
+
+              <div class="form-group border-top">
+                <h3>Study Technique Preference</h3>
+                <p class="setting-desc">Default breakdown strategy used by the Study Coach.</p>
+                <select id="study-preference-select">
+                  <option value="pomodoro" selected>Pomodoro Blocks (50m Study / 10m Break)</option>
+                  <option value="feynman">Feynman Explanation Focus</option>
+                  <option value="intensive">Intensive Sessions (No Break / 90m slots)</option>
+                </select>
+              </div>
+
+              <div class="form-group border-top">
+                <h3>Active Notifications</h3>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="check-notifs" checked> Send browser alert reminders before deadlines.
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="check-sound"> Play focus gong at break completions.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Save Settings</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 7: ABOUT & ARCHITECTURE ================= -->
+        <section id="panel-about" class="app-panel">
+          <div class="section-header-card">
+            <h1>ℹ️ System Architecture & Kaggle Guide</h1>
+            <p>Under the hood of LifePilot AI: Multi-Agent workflows and Model Context Protocol integration.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="glass-card">
+              <h2>🔧 Kaggle Concept Checklist</h2>
+              <ul class="bullet-list-checked">
+                <li><strong>Google ADK Multi-Agent System:</strong> The Coordinator Agent handles step-by-step logic, dispatching to specialized agents (Planner, Study, Scheduler, Optimizer).</li>
+                <li><strong>Model Context Protocol (MCP) Server:</strong> Backend implements an official MCP server registering tools for calendar matching, task sorting, reminder compilation, time division, and burnout checks.</li>
+                <li><strong>Input Sanitization:</strong> Express router validates incoming schemas. The AI helper filters override commands to secure the prompt loop.</li>
+                <li><strong>Zero Secrets in Code:</strong> Secrets loaded dynamically via `.env` file, defaulting to mock mode for ease of local validation.</li>
+              </ul>
+            </div>
+
+            <div class="glass-card">
+              <h2>📡 Active MCP Tools Schema</h2>
+              <p class="section-desc">These tools are fetched directly from the live MCP Server routes.</p>
+              <div class="mcp-tools-display" id="mcp-tools-list">
+                <!-- Dynamic tools fetched via API -->
+                <div class="loader-container"><div class="loader"></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

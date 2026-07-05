@@ -1,0 +1,12 @@
+{
+  "name": "lifepilot-ai-workspace",
+  "version": "1.0.0",
+  "description": "Root runner for LifePilot AI workspace",
+  "scripts": {
+    "postinstall": "npm install --prefix lifepilot-ai/backend",
+    "start": "npm start --prefix lifepilot-ai/backend",
+    "dev": "npm start --prefix lifepilot-ai/backend"
+  },
+  "author": "Kaggle Capstone Participant",
+  "license": "MIT"
+}

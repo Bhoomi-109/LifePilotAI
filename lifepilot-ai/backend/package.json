@@ -1,0 +1,19 @@
+{
+  "name": "lifepilot-ai-backend",
+  "version": "1.0.0",
+  "description": "Backend services for LifePilot AI portfolio application",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "@modelcontextprotocol/sdk": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "author": "Kaggle Capstone Participant",
+  "license": "MIT"
+}
