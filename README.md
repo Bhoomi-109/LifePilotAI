@@ -36,7 +36,7 @@ graph TD
 ---
 
 <img width="1912" height="875" alt="Image" src="https://github.com/user-attachments/assets/51fe34cc-7565-42b5-a0ee-6ed9cb438639" />
-
+<img width="1691" height="872" alt="Image" src="https://github.com/user-attachments/assets/239913f0-2222-49c1-8c1f-37bc8379137e" />
 # 🌟 Key Capstone Concepts Demonstrated
 
 ## 1. Google ADK Multi-Agent Orchestration
